@@ -14,40 +14,65 @@ import XCTest
 
 class ShowNameInteractorTests: XCTestCase
 {
-  // MARK: - Subject under test
+    // MARK: - Subject under test
   
-  var sut: ShowNameInteractor!
+    var sut: ShowNameInteractor!
   
-  // MARK: - Test lifecycle
+    // MARK: - Test lifecycle
   
-  override func setUp()
-  {
-    super.setUp()
-    setupShowNameInteractor()
-  }
+    override func setUp()
+    {
+        super.setUp()
+        setupShowNameInteractor()
+    }
   
-  override func tearDown()
-  {
-    super.tearDown()
-  }
+    override func tearDown()
+    {
+        super.tearDown()
+    }
   
-  // MARK: - Test setup
+    // MARK: - Test setup
   
-  func setupShowNameInteractor()
-  {
-    sut = ShowNameInteractor()
-  }
+    func setupShowNameInteractor()
+    {
+        sut = ShowNameInteractor()
+    }
   
-  // MARK: - Test doubles
-  
-  // MARK: - Tests
-  
-  func testSomething()
-  {
-    // Given
+    // MARK: - Test doubles
     
-    // When
+    class ShowNameInteractorOutputStub: ShowNameInteractorOutput {
+        var presentLabelMessageCalled = false
+        
+        func presentLabelMessage(response: ShowName.DisplayMessage.Response) {
+            presentLabelMessageCalled = true
+        }
+    }
     
-    // Then
-  }
+    class ShowNameWorkerStub: ShowNameWorker {
+        var createMessageCalled = false
+        
+        override func createMessage(text: String) -> String {
+            createMessageCalled = true
+            
+            return ""
+        }
+    }
+  
+    // MARK: - Tests
+    
+    func testShouldCallPresenterToFormatLabelMessage() {
+        // Given
+        let showNameInteractorOutputStub = ShowNameInteractorOutputStub()
+        let showNameWorkerStub = ShowNameWorkerStub()
+        sut.output = showNameInteractorOutputStub
+        sut.worker = showNameWorkerStub
+        let request = ShowName.DisplayMessage.Request(text: "ABC")
+        
+        // When
+        sut.createLabelMessage(request: request)
+        
+        // Then
+        XCTAssertEqual(showNameInteractorOutputStub.presentLabelMessageCalled, true, "Interactor should call Presenter to format label message.")
+    }
+
 }

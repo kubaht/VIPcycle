@@ -15,8 +15,25 @@ class ShowNameWorker
 {
   // MARK: - Business Logic
   
-  func doSomeWork()
-  {
-    // NOTE: Do the work
-  }
+    func createMessage(text: String) -> String {
+        if containsOnlyLetters(input: text) {
+            return "So you’re name is " + text
+        }
+        else {
+            return "I guess " + text + " is not your name, is it?"
+        }
+    }
+    
+    func generateRandomIntegerNumber() -> Int {
+        return Int(arc4random_uniform(100))
+    }
+    
+    private func containsOnlyLetters(input: String) -> Bool {
+        for char in input.characters {
+            if (!(char >= "a" && char <= "z") && !(char >= "A" && char <= "Z") ) {
+                return false
+            }
+        }
+        return true
+    }
 }

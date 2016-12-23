@@ -47,7 +47,8 @@ class ShowNameViewController: UIViewController, ShowNameViewControllerInput
   // MARK: - Event handling
     
     @IBAction func inputTextFieldValueChanged(_ sender: UITextField) {
-        let request = ShowName.DisplayMessage.Request(text: inputTextField.text!)
+        let text = inputTextField.text!
+        let request = ShowName.DisplayMessage.Request(text: text)
         output.createLabelMessage(request: request)
     }
     

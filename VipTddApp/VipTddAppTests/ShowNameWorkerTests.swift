@@ -14,40 +14,55 @@ import XCTest
 
 class ShowNameWorkerTests: XCTestCase
 {
-  // MARK: - Subject under test
+    // MARK: - Subject under test
   
-  var sut: ShowNameWorker!
+    var sut: ShowNameWorker!
   
-  // MARK: - Test lifecycle
+    // MARK: - Test lifecycle
   
-  override func setUp()
-  {
-    super.setUp()
-    setupShowNameWorker()
-  }
+    override func setUp()
+    {
+        super.setUp()
+        setupShowNameWorker()
+    }
   
-  override func tearDown()
-  {
-    super.tearDown()
-  }
+    override func tearDown()
+    {
+        super.tearDown()
+    }
   
-  // MARK: - Test setup
+    // MARK: - Test setup
   
-  func setupShowNameWorker()
-  {
-    sut = ShowNameWorker()
-  }
+    func setupShowNameWorker()
+    {
+        sut = ShowNameWorker()
+    }
   
-  // MARK: - Test doubles
+    // MARK: - Test doubles
   
-  // MARK: - Tests
-  
-  func testSomething()
-  {
-    // Given
+    // MARK: - Tests
     
-    // When
+    func testShouldReturnProperMessageWhenTextContainsLettersOnly() {
+        // Given
+        let text = "TestName"
+        let expectedMessage = "So you’re name is " + text
+        
+        // When
+        let message = sut.createMessage(text: text)
+        
+        // Then
+        XCTAssertEqual(message, expectedMessage, "Message is different than expected.")
+    }
     
-    // Then
-  }
+    func testShouldReturnProperMessageWhenTextDoesNotContainLettersOnly() {
+        // Given
+        let text = "TestName123"
+        let expectedMessage = "I guess " + text + " is not your name, is it?"
+        
+        // When
+        let message = sut.createMessage(text: text)
+        
+        // Then
+        XCTAssertEqual(message, expectedMessage, "Message is different than expected.")
+    }
 }

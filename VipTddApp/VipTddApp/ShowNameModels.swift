@@ -31,7 +31,8 @@ struct ShowName
             var text: String
         }
         struct Response {
-            
+            var message: String
+            var number: Int
         }
         struct ViewModel {
             

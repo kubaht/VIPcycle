@@ -23,6 +23,7 @@
 		A623CCD91E0A957E00EB982E /* ShowNamePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A623CCD51E0A957E00EB982E /* ShowNamePresenterTests.swift */; };
 		A623CCDA1E0A957E00EB982E /* ShowNameViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A623CCD61E0A957E00EB982E /* ShowNameViewControllerTests.swift */; };
 		A623CCDB1E0A957E00EB982E /* ShowNameWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A623CCD71E0A957E00EB982E /* ShowNameWorkerTests.swift */; };
+		A636E9851E0ABF9100A95845 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = A636E9841E0ABF9100A95845 /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		A623CCD51E0A957E00EB982E /* ShowNamePresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowNamePresenterTests.swift; sourceTree = "<group>"; };
 		A623CCD61E0A957E00EB982E /* ShowNameViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowNameViewControllerTests.swift; sourceTree = "<group>"; };
 		A623CCD71E0A957E00EB982E /* ShowNameWorkerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowNameWorkerTests.swift; sourceTree = "<group>"; };
+		A636E9841E0ABF9100A95845 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 		A623CC941E0A91F300EB982E = {
 			isa = PBXGroup;
 			children = (
+				A636E9841E0ABF9100A95845 /* .gitignore */,
 				A623CC9F1E0A91F400EB982E /* VipTddApp */,
 				A623CCB71E0A91F400EB982E /* VipTddAppTests */,
 				A623CC9E1E0A91F400EB982E /* Products */,
@@ -235,6 +238,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A636E9851E0ABF9100A95845 /* .gitignore in Resources */,
 				A623CCAE1E0A91F400EB982E /* LaunchScreen.storyboard in Resources */,
 				A623CCAB1E0A91F400EB982E /* Assets.xcassets in Resources */,
 				A623CCA61E0A91F400EB982E /* Main.storyboard in Resources */,
@@ -474,6 +478,7 @@
 				A623CCBF1E0A91F400EB982E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A623CCC01E0A91F400EB982E /* Build configuration list for PBXNativeTarget "VipTddAppTests" */ = {
 			isa = XCConfigurationList;
@@ -482,6 +487,7 @@
 				A623CCC21E0A91F400EB982E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

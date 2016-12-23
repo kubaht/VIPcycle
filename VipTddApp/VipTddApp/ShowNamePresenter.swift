@@ -13,7 +13,7 @@ import UIKit
 
 protocol ShowNamePresenterInput
 {
-  func presentSomething(response: ShowName.Something.Response)
+  func presentLabelMessage(response: ShowName.DisplayMessage.Response)
 }
 
 protocol ShowNamePresenterOutput: class
@@ -34,4 +34,9 @@ class ShowNamePresenter: ShowNamePresenterInput
     let viewModel = ShowName.Something.ViewModel()
     output.displaySomething(viewModel: viewModel)
   }
+    
+    // to be updated
+    func presentLabelMessage(response: ShowName.DisplayMessage.Response) {
+        
+    }
 }

@@ -18,31 +18,20 @@ protocol ShowNameInteractorInput
 
 protocol ShowNameInteractorOutput
 {
-  func presentSomething(response: ShowName.Something.Response)
+    func presentLabelMessage(response: ShowName.DisplayMessage.Response)
 }
 
 class ShowNameInteractor: ShowNameInteractorInput
 {
-  var output: ShowNameInteractorOutput!
-  var worker: ShowNameWorker!
+    var output: ShowNameInteractorOutput!
+    var worker: ShowNameWorker!
   
-  // MARK: - Business logic
+    // MARK: - Business logic
     
-    // to be updated
     func createLabelMessage(request: ShowName.DisplayMessage.Request) {
-        
+        let message = worker.createMessage(text: request.text)
+        let number = worker.generateRandomIntegerNumber()
+        let response = ShowName.DisplayMessage.Response(message: message, number: number)
+        output.presentLabelMessage(response: response)
     }
-  
-  func doSomething(request: ShowName.Something.Request)
-  {
-    // NOTE: Create some Worker to do the work
-    
-    worker = ShowNameWorker()
-    worker.doSomeWork()
-    
-    // NOTE: Pass the result to the Presenter
-    
-    let response = ShowName.Something.Response()
-    output.presentSomething(response: response)
-  }
 }
