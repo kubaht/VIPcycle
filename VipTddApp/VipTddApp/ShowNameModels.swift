@@ -33,6 +33,7 @@ struct ShowName
         struct Response {
             var message: String
             var number: Int
+            var isRealName: Bool
         }
         struct ViewModel {
             

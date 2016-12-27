@@ -14,12 +14,15 @@ import UIKit
 class ShowNameWorker
 {
   // MARK: - Business Logic
+    var isRealName = false
   
     func createMessage(text: String) -> String {
         if containsOnlyLetters(input: text) {
+            isRealName = true
             return "So you’re name is " + text
         }
         else {
+            isRealName = false
             return "I guess " + text + " is not your name, is it?"
         }
     }

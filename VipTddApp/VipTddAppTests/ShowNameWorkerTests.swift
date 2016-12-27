@@ -52,6 +52,7 @@ class ShowNameWorkerTests: XCTestCase
         
         // Then
         XCTAssertEqual(message, expectedMessage, "Message is different than expected.")
+        XCTAssertEqual(sut.isRealName, true)
     }
     
     func testShouldReturnProperMessageWhenTextDoesNotContainLettersOnly() {
@@ -64,5 +65,6 @@ class ShowNameWorkerTests: XCTestCase
         
         // Then
         XCTAssertEqual(message, expectedMessage, "Message is different than expected.")
+        XCTAssertEqual(sut.isRealName, false)
     }
 }

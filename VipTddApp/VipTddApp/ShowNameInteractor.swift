@@ -31,7 +31,8 @@ class ShowNameInteractor: ShowNameInteractorInput
     func createLabelMessage(request: ShowName.DisplayMessage.Request) {
         let message = worker.createMessage(text: request.text)
         let number = worker.generateRandomIntegerNumber()
-        let response = ShowName.DisplayMessage.Response(message: message, number: number)
+        let isRealName = worker.isRealName
+        let response = ShowName.DisplayMessage.Response(message: message, number: number, isRealName: isRealName)
         output.presentLabelMessage(response: response)
     }
 }
