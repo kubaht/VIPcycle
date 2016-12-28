@@ -28,6 +28,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
+                                    <action selector="inputTextFieldTextProvided:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="c5t-Ow-DuP"/>
                                     <action selector="inputTextFieldValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="HkX-eh-Fbv"/>
                                 </connections>
                             </textField>
@@ -35,7 +36,7 @@
                                 <rect key="frame" x="16" y="393" width="343" height="138"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>

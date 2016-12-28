@@ -73,5 +73,17 @@ class ShowNameViewControllerTests: XCTestCase
         // Then
         XCTAssert(showNameViewControllerOutputStub.createLabelMessageCalled, "inputTextFieldValuChanged() method should call createLabelMessage()")
     }
+    
+    func testShouldDisplayMessageInOutputLabel() {
+        // Given
+        let viewModel = ShowName.DisplayMessage.ViewModel(message: "So you’re name is ABC and your number is 65")
+        sut.outputLabel = UILabel()
+        
+        // When
+        sut.displayLabelMessage(viewModel: viewModel)
+        
+        // Then
+        XCTAssertEqual(sut.outputLabel.text, viewModel.message, "ViewController should display message from ViewModel in output label.")
+    }
   
 }

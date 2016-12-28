@@ -13,30 +13,30 @@ import UIKit
 
 protocol ShowNamePresenterInput
 {
-  func presentLabelMessage(response: ShowName.DisplayMessage.Response)
+    func presentLabelMessage(response: ShowName.DisplayMessage.Response)
 }
 
 protocol ShowNamePresenterOutput: class
 {
-  func displaySomething(viewModel: ShowName.Something.ViewModel)
+    func displayLabelMessage(viewModel: ShowName.DisplayMessage.ViewModel)
 }
 
 class ShowNamePresenter: ShowNamePresenterInput
 {
-  weak var output: ShowNamePresenterOutput!
+    weak var output: ShowNamePresenterOutput!
   
-  // MARK: - Presentation logic
+    // MARK: - Presentation logic
   
-  func presentSomething(response: ShowName.Something.Response)
-  {
-    // NOTE: Format the response from the Interactor and pass the result back to the View Controller
-    
-    let viewModel = ShowName.Something.ViewModel()
-    output.displaySomething(viewModel: viewModel)
-  }
-    
-    // to be updated
     func presentLabelMessage(response: ShowName.DisplayMessage.Response) {
+        let message: String
+        if response.isRealName {
+            message = response.message + " and your number is " + String(response.number)
+        }
+        else {
+            message = response.message + " Since now, I will call you " + String(response.number)
+        }
         
+        let viewModel = ShowName.DisplayMessage.ViewModel(message: message)
+        output.displayLabelMessage(viewModel: viewModel)
     }
 }

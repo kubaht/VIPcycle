@@ -36,7 +36,7 @@ struct ShowName
             var isRealName: Bool
         }
         struct ViewModel {
-            
+            var message: String
         }
     }
 }

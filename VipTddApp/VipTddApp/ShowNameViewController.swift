@@ -13,7 +13,7 @@ import UIKit
 
 protocol ShowNameViewControllerInput
 {
- 
+    func displayLabelMessage(viewModel: ShowName.DisplayMessage.ViewModel)
 }
 
 protocol ShowNameViewControllerOutput
@@ -36,22 +36,38 @@ class ShowNameViewController: UIViewController, ShowNameViewControllerInput
         super.awakeFromNib()
         ShowNameConfigurator.sharedInstance.configure(viewController: self)
     }
+    
+    // These two functions are added to invoke EndEditing event when user taps outside the text field.
+    // They might be provided via VIP cycle, but in case of usefulness, they were handled this way.
+    
+    func dismissKeyboardWhenTap() {
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action:#selector(ShowNameViewController.dismissKeyboard)))
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
   
     // MARK: - View lifecycle
   
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        dismissKeyboardWhenTap()
     }
   
   // MARK: - Event handling
     
-    @IBAction func inputTextFieldValueChanged(_ sender: UITextField) {
+    @IBAction func inputTextFieldTextProvided(_ sender: UITextField) {
         let text = inputTextField.text!
         let request = ShowName.DisplayMessage.Request(text: text)
         output.createLabelMessage(request: request)
     }
     
   // MARK: - Display logic
+    
+    func displayLabelMessage(viewModel: ShowName.DisplayMessage.ViewModel) {
+        outputLabel.text = viewModel.message
+    }
   
 }

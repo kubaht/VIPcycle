@@ -29,6 +29,7 @@ class ShowNameInteractor: ShowNameInteractorInput
     // MARK: - Business logic
     
     func createLabelMessage(request: ShowName.DisplayMessage.Request) {
+        worker = ShowNameWorker()
         let message = worker.createMessage(text: request.text)
         let number = worker.generateRandomIntegerNumber()
         let isRealName = worker.isRealName

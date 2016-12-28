@@ -14,40 +14,69 @@ import XCTest
 
 class ShowNamePresenterTests: XCTestCase
 {
-  // MARK: - Subject under test
+    // MARK: - Subject under test
   
-  var sut: ShowNamePresenter!
+    var sut: ShowNamePresenter!
   
-  // MARK: - Test lifecycle
+    // MARK: - Test lifecycle
   
-  override func setUp()
-  {
-    super.setUp()
-    setupShowNamePresenter()
-  }
-  
-  override func tearDown()
-  {
-    super.tearDown()
-  }
-  
-  // MARK: - Test setup
-  
-  func setupShowNamePresenter()
-  {
-    sut = ShowNamePresenter()
-  }
-  
-  // MARK: - Test doubles
-  
-  // MARK: - Tests
-  
-  func testSomething()
-  {
-    // Given
+    override func setUp()
+    {
+        super.setUp()
+        setupShowNamePresenter()
+    }
     
-    // When
+    override func tearDown()
+    {
+        super.tearDown()
+    }
+  
+    // MARK: - Test setup
+  
+    func setupShowNamePresenter()
+    {
+        sut = ShowNamePresenter()
+    }
+  
+    // MARK: - Test doubles
     
-    // Then
-  }
+    class ShowNamePresenterOutputStub: ShowNamePresenterOutput {
+        var displayLabelMessageCalled = false
+        var ShowName_DisplayMessage_ViewModel: ShowName.DisplayMessage.ViewModel!
+        
+        func displayLabelMessage(viewModel: ShowName.DisplayMessage.ViewModel) {
+            ShowName_DisplayMessage_ViewModel = viewModel
+            displayLabelMessageCalled = true
+        }
+    }
+  
+    // MARK: - Tests
+  
+    func testShouldCallViewControllerToDisplayFormattedDataWhenNameIsReal() {
+        // Given
+        let showNamePresenterOutputStub = ShowNamePresenterOutputStub()
+        sut.output = showNamePresenterOutputStub
+        let response = ShowName.DisplayMessage.Response(message: "So you’re name is ABC", number: 65, isRealName: true)
+        
+        // When
+        sut.presentLabelMessage(response: response)
+        
+        // Then
+        XCTAssertEqual(showNamePresenterOutputStub.displayLabelMessageCalled, true, "Presenter should call ViewController to display formatted data.")
+        XCTAssertEqual(showNamePresenterOutputStub.ShowName_DisplayMessage_ViewModel.message, "So you’re name is ABC and your number is 65", "Presenter formatted data uncorrectly.")
+    }
+    
+    func testShouldCallViewControllerToDisplayFormattedDataWhenNameIsNotReal() {
+        // Given
+        let showNamePresenterOutputStub = ShowNamePresenterOutputStub()
+        sut.output = showNamePresenterOutputStub
+        let response = ShowName.DisplayMessage.Response(message: "I guess ABC123 is not your name, is it?", number: 65, isRealName: false)
+        
+        // When
+        sut.presentLabelMessage(response: response)
+        
+        // Then
+        XCTAssertEqual(showNamePresenterOutputStub.displayLabelMessageCalled, true, "Presenter should call ViewController to display formatted data.")
+        XCTAssertEqual(showNamePresenterOutputStub.ShowName_DisplayMessage_ViewModel.message, "I guess ABC123 is not your name, is it? Since now, I will call you 65", "Presenter formatted data uncorrectly.")
+    }
 }
